@@ -8,12 +8,12 @@ Summary(ru.UTF-8):	Библиотека для обработки различн
 Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
-Version:	9
+Version:	9a
 Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
-# Source0-md5:	b397211ddfd506b92cd5e02a22ac924d
+# Source0-md5:	3353992aecaee1805ef4109aadd433e7
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
 Patch0:		%{name}-maxmem-sysconf.patch
