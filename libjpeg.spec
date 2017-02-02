@@ -1,3 +1,4 @@
+# NOTE: PLD Th uses libjpeg-turbo with libjpeg-8 API/ABI (libjpeg-turbo doesn't support libjpeg-9 additions)
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
 Summary(es.UTF-8):	Biblioteca para manipulación de diferentes archivos JPEGs
@@ -8,12 +9,12 @@ Summary(ru.UTF-8):	Библиотека для обработки различн
 Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
-Version:	9a
-Release:	1
+Version:	9b
+Release:	0.1
 License:	distributable
 Group:		Libraries
 Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
-# Source0-md5:	3353992aecaee1805ef4109aadd433e7
+# Source0-md5:	6a9996ce116ec5c52b4870dbcd6d3ddb
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
 Patch0:		%{name}-maxmem-sysconf.patch
