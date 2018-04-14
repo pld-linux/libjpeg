@@ -9,12 +9,12 @@ Summary(ru.UTF-8):	Библиотека для обработки различн
 Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
-Version:	9b
+Version:	9c
 Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
-# Source0-md5:	6a9996ce116ec5c52b4870dbcd6d3ddb
+# Source0-md5:	93c62597eeef81a84d988bccbda1e990
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
 Patch0:		%{name}-maxmem-sysconf.patch
@@ -217,6 +217,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/jmorecfg.h
 %{_includedir}/jpeglib.h
 %{_includedir}/jversion.h
+%{_pkgconfigdir}/libjpeg.pc
 
 %files static
 %defattr(644,root,root,755)
