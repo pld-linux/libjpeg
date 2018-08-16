@@ -10,7 +10,7 @@ Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
 Version:	9c
-Release:	1
+Release:	2
 License:	distributable
 Group:		Libraries
 Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
@@ -195,6 +195,8 @@ sed -i -e 's#.*HAVE_STD..._H.*##g' $RPM_BUILD_ROOT%{_includedir}/jconfig.h
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libjpeg.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -211,7 +213,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc libjpeg.txt structure.txt
 %attr(755,root,root) %{_libdir}/libjpeg.so
-%{_libdir}/libjpeg.la
 %{_includedir}/jconfig.h
 %{_includedir}/jerror.h
 %{_includedir}/jmorecfg.h
