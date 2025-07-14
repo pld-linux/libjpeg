@@ -167,7 +167,7 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 
 %prep
 %setup -q -n jpeg-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %configure \
