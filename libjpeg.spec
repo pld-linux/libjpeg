@@ -1,4 +1,8 @@
-# NOTE: PLD Th uses libjpeg-turbo with libjpeg-8 API/ABI (libjpeg-turbo doesn't support libjpeg-9 additions)
+# NOTE: PLD Th uses libjpeg-turbo with libjpeg-8 API/ABI (libjpeg-turbo doesn't support libjpeg-9+ additions)
+#
+# Conditional build
+%bcond_without	tests	# test suite
+
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
 Summary(es.UTF-8):	Biblioteca para manipulación de diferentes archivos JPEGs
@@ -9,12 +13,12 @@ Summary(ru.UTF-8):	Библиотека для обработки различн
 Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
-Version:	9f
+Version:	10
 Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
-# Source0-md5:	9ca58d68febb0fa9c1c087045b9a5483
+# Source0-md5:	cc9eda64fc6281dc24739e29aa9556fc
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
 Patch0:		%{name}-maxmem-sysconf.patch
@@ -177,8 +181,10 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 
 %{__make}
 
+%if %{with tests}
 LD_PRELOAD=$PWD/.libs/%{name}.so \
 %{__make} test
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -206,13 +212,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README change.log
-%attr(755,root,root) %{_libdir}/libjpeg.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libjpeg.so.9
+%{_libdir}/libjpeg.so.*.*.*
+%ghost %{_libdir}/libjpeg.so.10
 
 %files devel
 %defattr(644,root,root,755)
 %doc libjpeg.txt structure.txt
-%attr(755,root,root) %{_libdir}/libjpeg.so
+%{_libdir}/libjpeg.so
 %{_includedir}/jconfig.h
 %{_includedir}/jerror.h
 %{_includedir}/jmorecfg.h
