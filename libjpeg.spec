@@ -1,7 +1,8 @@
 # NOTE: PLD Th uses libjpeg-turbo with libjpeg-8 API/ABI (libjpeg-turbo doesn't support libjpeg-9+ additions)
 #
 # Conditional build
-%bcond_without	tests	# test suite
+%bcond_without	static_libs	# static library
+%bcond_without	tests		# test suite
 
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
@@ -24,6 +25,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 Patch0:		%{name}-maxmem-sysconf.patch
 URL:		http://www.ijg.org/
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -177,7 +179,7 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 %configure \
 	--disable-silent-rules \
 	--enable-shared \
-	--enable-static
+	%{__enable_disable static_libs static}
 
 %{__make}
 
@@ -226,9 +228,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/jversion.h
 %{_pkgconfigdir}/libjpeg.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libjpeg.a
+%endif
 
 %files progs
 %defattr(644,root,root,755)
